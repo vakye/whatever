@@ -6,6 +6,7 @@
 
 #include "shared.c"
 #include "platform.c"
+#include "main.c"
 
 typedef struct
 {
@@ -17,8 +18,6 @@ typedef struct
 } linux_context;
 
 local linux_context Linux = {0};
-
-#include "main.c"
 
 __attribute__((naked))
 void LinuxEntry(void)
