@@ -8,6 +8,7 @@ CompileFlags="
     -g \
     -O2 \
     -std=c11 \
+    -fPIC \
     -ffreestanding \
     -fno-stack-protector \
     -Wall -Wextra -Wpedantic -Werror \

@@ -111,3 +111,52 @@ typedef struct
 
 #define Str(Literal)        (string){Literal, sizeof(Literal) - 1}
 #define StrData(Data, Size) (string){Data, Size}
+
+local string CString(char* Data)
+{
+    string Result = {0};
+
+    if (Data)
+    {
+        Result.Data = Data;
+
+        while (Data[Result.Size])
+            Result.Size++;
+    }
+
+    return (Result);
+}
+
+local string ViewString(string A, usize From, usize To)
+{
+    Assert(From <= To);
+    Assert(To <= A.Size);
+
+    string Result = StrData(A.Data + From, To - From);
+    return (Result);
+}
+
+local b32 IsNilString(string A)
+{
+    b32 Result = (A.Size == 0);
+    return (Result);
+}
+
+local b32 StringEqual(string A, string B)
+{
+    b32 Result = (A.Size == B.Size);
+
+    if (Result)
+    {
+        for (usize Index = 0; Index < A.Size; Index++)
+        {
+            if (A.Data[Index] != B.Data[Index])
+            {
+                Result = false;
+                break;
+            }
+        }
+    }
+
+    return (Result);
+}
